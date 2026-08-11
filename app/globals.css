@@ -1,26 +1,447 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #04070f;
+  --surface: #070c1c;
+  --card: #0a1122;
+  --surface-high: #0f1a33;
+  --on-surface: #e8efff;
+  --muted: #93a4c4;
+  --accent: #38e4ff;
+  --accent-deep: #00b4ff;
+  --violet: #8b5cf6;
+  --violet-light: #c9b8ff;
+  --galaxy: #2a4bd7;
+  --outline: #1b2a4a;
+  --success: #4ade80;
+  --warning: #facc15;
+  --error: #ff8fb1;
+
+  --star-small: rgba(190, 220, 255, 0.55);
+  --star-large: rgba(220, 240, 255, 0.8);
 }
 
 @theme inline {
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-surface-high: var(--surface-high);
+  --color-on-surface: var(--on-surface);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-deep: var(--accent-deep);
+  --color-violet: var(--violet);
+  --color-violet-light: var(--violet-light);
+  --color-galaxy: var(--galaxy);
+  --color-outline: var(--outline);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+
+  --font-display: var(--font-space-grotesk);
+  --font-body: var(--font-geist-sans);
+  --font-mono: var(--font-jetbrains-mono);
+
+  --radius-lg: 0.75rem;
+  --radius-xl: 1.5rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+  background-image:
+    radial-gradient(120% 60% at 50% -10%, rgba(42, 75, 215, 0.14) 0%, transparent 60%),
+    radial-gradient(90% 50% at 85% 110%, rgba(139, 92, 246, 0.1) 0%, transparent 60%);
+  color: var(--on-surface);
+  font-family: var(--font-body);
+}
+
+::selection {
+  background-color: var(--accent);
+  color: #031018;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--accent), var(--galaxy), var(--violet));
+  border-radius: 999px;
+}
+
+/* ---------- Background FX ---------- */
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(56, 228, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 228, 255, 0.07) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(80% 80% at 50% 40%, black 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(80% 80% at 50% 40%, black 30%, transparent 100%);
+}
+
+.starfield {
+  position: absolute;
+  inset: -12%;
+  background-image:
+    radial-gradient(1px 1px at 9.7% 83.4%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 94.8% 3.6%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 1.2% 5.1%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 76.6% 58.5%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 91.4% 78.4%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 33.3% 19.5%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 26.7% 79.3%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 98.4% 14.9%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 33.9% 3.4%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 26.6% 16.7%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 86.4% 20.9%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 91.7% 23.9%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 93.0% 93.6%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 30.7% 63.0%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 51.2% 19.8%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 91.1% 33.5%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 98.2% 94.9%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 93.1% 5.2%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 92.3% 88.7%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 35.7% 10.6%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 69.5% 58.3%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 24.3% 17.8%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 99.7% 30.7%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 53.1% 71.0%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 60.5% 49.9%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 37.8% 59.9%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 32.5% 72.5%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 12.6% 53.1%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 5.7% 56.7%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 17.4% 66.7%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 94.2% 33.5%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 62.4% 46.2%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 9.7% 14.2%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 55.4% 9.8%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 15.0% 43.2%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 22.9% 23.5%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 57.5% 7.6%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 73.2% 58.4%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 39.8% 28.7%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 89.4% 17.5%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 40.5% 63.6%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 88.7% 98.1%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 51.1% 71.3%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 69.2% 21.1%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 30.8% 42.4%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 79.1% 54.3%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 28.3% 36.4%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 29.7% 64.2%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 13.7% 44.9%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 72.2% 4.7%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 1.8% 44.0%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 63.7% 45.6%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 67.3% 7.9%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 69.9% 4.9%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 78.3% 73.7%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 92.9% 67.3%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 33.8% 15.4%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 76.5% 97.9%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 33.0% 41.7%, var(--star-small) 50%, transparent 51%),
+    radial-gradient(1px 1px at 9.5% 12.5%, var(--star-small) 50%, transparent 51%);
+}
+
+.starfield-bright {
+  position: absolute;
+  inset: -12%;
+  background-image:
+    radial-gradient(2px 2px at 27.6% 79.1%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 3.0% 45.0%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 78.8% 72.3%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 34.2% 69.9%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 16.0% 2.6%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 90.0% 66.4%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 88.6% 21.9%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 88.3% 46.9%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 30.3% 29.5%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 81.9% 63.2%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 89.1% 52.2%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 62.4% 93.1%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 90.1% 22.5%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 76.5% 67.4%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 50.0% 71.2%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 45.7% 72.0%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 85.0% 0.3%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 13.7% 32.8%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 26.2% 72.7%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 7.2% 93.6%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 60.7% 55.1%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 8.3% 12.5%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 29.2% 15.9%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 11.1% 25.0%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 72.4% 31.4%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 52.2% 32.9%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 88.3% 34.1%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 28.0% 11.0%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 99.3% 92.5%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 2.6% 76.8%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 87.6% 64.6%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 42.1% 52.0%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 57.1% 24.1%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 56.8% 64.1%, var(--star-large) 50%, transparent 51%),
+    radial-gradient(2px 2px at 80.0% 31.5%, var(--star-large) 50%, transparent 51%);
+}
+
+.orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  pointer-events: none;
+}
+.orb-cyan {
+  width: 520px;
+  height: 520px;
+  top: -12%;
+  right: -8%;
+  background: radial-gradient(circle at 50% 50%, rgba(56, 228, 255, 0.2), transparent 65%);
+}
+.orb-violet {
+  width: 560px;
+  height: 560px;
+  bottom: -14%;
+  left: -10%;
+  background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.18), transparent 65%);
+}
+.orb-blue {
+  width: 480px;
+  height: 480px;
+  top: 38%;
+  left: 55%;
+  background: radial-gradient(circle at 50% 50%, rgba(42, 75, 215, 0.16), transparent 65%);
+}
+
+.aurora {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 25%,
+    rgba(56, 228, 255, 0.04) 40%,
+    transparent 55%,
+    rgba(139, 92, 246, 0.05) 70%,
+    transparent 85%
+  );
+}
+
+/* ---------- Cards & Surfaces ---------- */
+
+.glass-card {
+  position: relative;
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.045) 0%,
+    rgba(255, 255, 255, 0.015) 35%,
+    rgba(2, 6, 18, 0.18) 100%
+  );
+  background-color: rgba(10, 17, 34, 0.66);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(120, 160, 255, 0.16);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 24px 60px -28px rgba(2, 6, 18, 0.9);
+}
+
+.glow-hover {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+.glow-hover:hover {
+  transform: translateY(-4px);
+  border-color: rgba(56, 228, 255, 0.4);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 24px 60px -28px rgba(2, 6, 18, 0.9),
+    0 0 40px -16px rgba(56, 228, 255, 0.18);
+}
+
+.primary-glow {
+  box-shadow:
+    0 0 18px -6px rgba(56, 228, 255, 0.35),
+    0 0 40px -16px rgba(139, 92, 246, 0.3);
+}
+
+/* ---------- Text & Gradients ---------- */
+
+.text-gradient {
+  background-image: linear-gradient(100deg, #38e4ff 0%, #2a4bd7 48%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-shimmer {
+  background-image: linear-gradient(
+    100deg,
+    #38e4ff 0%,
+    #2a4bd7 30%,
+    #8b5cf6 55%,
+    #2a4bd7 80%,
+    #38e4ff 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.mono-accent {
+  color: var(--accent);
+  text-shadow: 0 0 12px rgba(56, 228, 255, 0.3);
+}
+
+/* ---------- Buttons ---------- */
+
+.btn-primary {
+  position: relative;
+  isolation: isolate;
+  background-image: linear-gradient(135deg, #38e4ff 0%, #2a4bd7 55%, #8b5cf6 120%);
+  background-size: 180% 180%;
+  background-position: 0% 0%;
+  color: #031018;
+  border: 1px solid rgba(56, 228, 255, 0.5);
+  box-shadow: 0 8px 24px -8px rgba(56, 228, 255, 0.45);
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    background-position 0.4s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  background-position: 100% 100%;
+  box-shadow: 0 12px 34px -10px rgba(56, 228, 255, 0.5);
+  border-color: rgba(56, 228, 255, 0.8);
+}
+
+.btn-ghost {
+  background: rgba(56, 228, 255, 0.05);
+  border: 1px solid rgba(120, 160, 255, 0.22);
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+.btn-ghost:hover {
+  transform: translateY(-2px);
+  border-color: rgba(56, 228, 255, 0.5);
+  background-color: rgba(56, 228, 255, 0.08);
+}
+
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 1.5px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--accent), var(--violet));
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.link-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Navbar ---------- */
+
+.nav-link {
+  position: relative;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 2px;
+  height: 2px;
+  width: 0;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), var(--violet));
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-link:hover {
+  color: var(--accent);
+}
+.nav-link:hover::after {
+  width: 60%;
+}
+.nav-link-active {
+  color: var(--accent);
+}
+.nav-link-active::after {
+  width: 60%;
+}
+
+/* ---------- Scroll Reveal ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Animations ---------- */
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .glow-hover:hover {
+    transform: none;
+  }
 }
