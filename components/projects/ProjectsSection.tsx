@@ -7,6 +7,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import MonoTag from "@/components/ui/MonoTag";
 import TechChip from "@/components/ui/TechChip";
 import Reveal from "@/components/ui/Reveal";
+import TiltCard from "@/components/ui/TiltCard";
 import ProjectImage from "./ProjectImage";
 
 export default function ProjectsSection() {
@@ -109,54 +110,52 @@ export default function ProjectsSection() {
                 ],
               ];
               return (
-                <Reveal
-                  key={project.title}
-                  delay={index * 100}
-                  className="glass-card group glow-hover flex flex-col overflow-hidden rounded-2xl"
-                >
-                  <div className="relative overflow-hidden">
-                    <ProjectImage
-                      images={images[index]}
-                      primaryObjectFit={
-                        images[index][0].src.includes("faizzlovely")
-                          ? "contain"
-                          : "cover"
-                      }
-                      className="h-56 sm:h-64"
-                    />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#04070f]/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                  </div>
-                  <div className="flex flex-grow flex-col p-5 sm:p-6">
-                    <MonoTag>{project.label}</MonoTag>
-                    <h3 className="mb-3 mt-2 font-display text-xl font-semibold text-on-surface sm:text-2xl">
-                      {project.title}
-                    </h3>
-                    <p className="mb-4 break-words font-mono text-xs text-muted">
-                      Tech: {project.tech.join(", ")}
-                    </p>
-                    <p className="mb-6 flex-grow break-words font-body text-base leading-relaxed text-muted">
-                      {project.description}
-                    </p>
-                    <a
-                      href="#projects"
-                      className="link-underline mono-accent flex w-max items-center gap-2 font-body text-base transition-all hover:gap-3"
-                    >
-                      {t.projects.view}
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        aria-hidden="true"
+                <Reveal key={project.title} delay={index * 100}>
+                  <TiltCard className="glass-card group glow-hover flex h-full flex-col overflow-hidden rounded-2xl">
+                    <div className="relative overflow-hidden">
+                      <ProjectImage
+                        images={images[index]}
+                        primaryObjectFit={
+                          images[index][0].src.includes("faizzlovely")
+                            ? "contain"
+                            : "cover"
+                        }
+                        className="h-56 sm:h-64"
+                      />
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#04070f]/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                    </div>
+                    <div className="flex flex-grow flex-col p-5 sm:p-6">
+                      <MonoTag>{project.label}</MonoTag>
+                      <h3 className="mb-3 mt-2 font-display text-xl font-semibold text-on-surface sm:text-2xl">
+                        {project.title}
+                      </h3>
+                      <p className="mb-4 break-words font-mono text-xs text-muted">
+                        Tech: {project.tech.join(", ")}
+                      </p>
+                      <p className="mb-6 flex-grow break-words font-body text-base leading-relaxed text-muted">
+                        {project.description}
+                      </p>
+                      <a
+                        href="#projects"
+                        className="link-underline mono-accent flex w-max items-center gap-2 font-body text-base transition-all hover:gap-3"
                       >
-                        <path d="M7 17L17 7M7 7h10v10" />
-                      </svg>
-                    </a>
-                  </div>
+                        {t.projects.view}
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          aria-hidden="true"
+                        >
+                          <path d="M7 17L17 7M7 7h10v10" />
+                        </svg>
+                      </a>
+                    </div>
+                  </TiltCard>
                 </Reveal>
               );
             })}

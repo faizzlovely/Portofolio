@@ -78,7 +78,7 @@ export default function Hero() {
               width={720}
               height={960}
               sizes="(max-width: 1024px) 100vw, 360px"
-              className="relative z-20 aspect-[3/4] w-full rounded-2xl border border-white/10 object-cover shadow-[0_24px_60px_-30px_rgba(2,6,18,0.9)]"
+              className="profile-frame relative z-20 aspect-[3/4] w-full rounded-2xl border border-white/10 object-cover shadow-[0_24px_60px_-30px_rgba(2,6,18,0.9)]"
               priority
             />
             <div className="pointer-events-none absolute inset-0 z-30 rounded-2xl bg-gradient-to-t from-[#04070f]/50 via-transparent to-transparent" />

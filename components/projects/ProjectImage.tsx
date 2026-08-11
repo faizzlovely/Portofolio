@@ -28,7 +28,7 @@ export default function ProjectImage({
           alt={primary.alt}
           fill
           sizes="(max-width: 1024px) 100vw, 60vw"
-          className={`transition-transform duration-700 group-hover:scale-105 ${
+          className={`transition-transform duration-700 group-hover:scale-[1.03] ${
             primaryObjectFit === "contain"
               ? "object-contain"
               : "object-cover object-top"
