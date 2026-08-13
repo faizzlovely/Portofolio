@@ -30,6 +30,8 @@ export default function TiltCard({
         frame = 0;
         el.style.setProperty("--tilt-y", `${(-x * MAX_TILT * 2).toFixed(2)}deg`);
         el.style.setProperty("--tilt-x", `${(y * MAX_TILT * 2).toFixed(2)}deg`);
+        el.style.setProperty("--spot-x", `${((x + 0.5) * 100).toFixed(2)}%`);
+        el.style.setProperty("--spot-y", `${((y + 0.5) * 100).toFixed(2)}%`);
       });
     };
 
@@ -38,6 +40,8 @@ export default function TiltCard({
       el.classList.remove("tilt-moving");
       el.style.setProperty("--tilt-x", "0deg");
       el.style.setProperty("--tilt-y", "0deg");
+      el.style.setProperty("--spot-x", "50%");
+      el.style.setProperty("--spot-y", "50%");
     };
 
     el.addEventListener("pointermove", onMove);
@@ -54,6 +58,7 @@ export default function TiltCard({
 
   return (
     <div ref={ref} className={`tilt-card ${className}`}>
+      <div aria-hidden="true" className="card-spotlight" />
       {children}
     </div>
   );

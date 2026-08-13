@@ -9,7 +9,7 @@ export default function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section className="relative z-10 flex min-h-screen items-center pt-24 pb-20 sm:pb-28 md:pb-32">
+    <section className="hero-enter relative z-10 flex min-h-screen items-center pt-24 pb-20 sm:pb-28 md:pb-32">
       <Container className="grid w-full grid-cols-1 items-center gap-12 md:gap-16 lg:grid-cols-2">
         <Reveal className="flex flex-col gap-6">
           <div className="inline-flex w-max items-center gap-2 rounded-full border border-accent/25 bg-accent/[0.06] px-3 py-1 shadow-[0_0_16px_-8px_rgba(56,228,255,0.35)] backdrop-blur-sm">
@@ -69,8 +69,8 @@ export default function Hero() {
           className="relative mx-auto flex w-full max-w-md flex-col items-center gap-6 lg:max-w-none"
         >
           <div className="relative w-full max-w-[300px] sm:max-w-[360px]">
-            <div className="absolute -inset-3 z-0 rounded-3xl bg-accent/20 blur-xl sm:-inset-6 sm:blur-2xl" />
-            <div className="absolute -inset-3 z-0 translate-x-2 translate-y-2 rounded-3xl bg-violet/15 blur-xl sm:-inset-6 sm:translate-x-4 sm:translate-y-4 sm:blur-2xl" />
+            <div className="animate-float-slow absolute -inset-3 z-0 rounded-3xl bg-accent/20 blur-xl sm:-inset-6 sm:blur-2xl" />
+            <div className="animate-float-slow absolute -inset-3 z-0 translate-x-2 translate-y-2 rounded-3xl bg-violet/15 blur-xl sm:-inset-6 sm:translate-x-4 sm:translate-y-4 sm:blur-2xl" />
             <div className="absolute -inset-[1px] z-10 rounded-2xl bg-gradient-to-tr from-accent via-galaxy to-violet opacity-80 blur-[1px]" />
             <Image
               src="/images/profile-formal.png"
@@ -84,7 +84,7 @@ export default function Hero() {
             <div className="pointer-events-none absolute inset-0 z-30 rounded-2xl bg-gradient-to-t from-[#04070f]/50 via-transparent to-transparent" />
           </div>
 
-          <div className="glass-card relative z-20 -mt-14 w-full max-w-sm rounded-xl p-5 shadow-[0_0_28px_-16px_rgba(56,228,255,0.3)]">
+          <div className="animate-float-soft glass-card relative z-20 -mt-14 w-full max-w-sm rounded-xl p-5 shadow-[0_0_28px_-16px_rgba(56,228,255,0.3)]">
             <div className="mb-3 flex items-center gap-2 border-b border-outline/70 pb-3">
               <span className="h-2.5 w-2.5 rounded-full bg-error" />
               <span className="h-2.5 w-2.5 rounded-full bg-warning" />
